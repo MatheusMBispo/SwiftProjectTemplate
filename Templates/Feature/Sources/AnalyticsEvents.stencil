@@ -1,0 +1,21 @@
+import Foundation
+
+enum {{ NAME }}AnalyticsEvents {}
+
+extension {{ NAME }}AnalyticsEvents: AnalyticsEventType {
+    func name() -> String? {
+        switch self {
+      	default: return nil
+        }
+    }
+
+    func parameters() -> [String: Any]? {
+        switch self {
+    	  default: return nil
+        }
+    }
+
+    static func pageview() -> String? {
+        return nil
+    }
+}

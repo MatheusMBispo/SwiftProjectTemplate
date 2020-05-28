@@ -1,0 +1,15 @@
+import Foundation
+
+//sourcery: AutoMockable
+protocol {{ NAME }}AnalyticsProtocol {
+    func screenView()
+}
+
+class {{ NAME }}Analytics: {{ NAME }}AnalyticsProtocol {
+    //private let analytics = FirebaseAnalytics<{{ NAME }}AnalyticsEvents>()
+
+    func screenView() {
+        //analytics.pageview(screenClass: {{ NAME }}ViewController.identifier)
+        //analytics.log(.view)
+    }
+}

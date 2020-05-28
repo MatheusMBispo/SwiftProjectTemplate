@@ -1,0 +1,33 @@
+@testable import BrMallsLojista
+import XCTest
+
+class {{ NAME }}ViewControllerTests: XCTestCase {
+    var controller: {{ NAME }}ViewController!
+	var listener: {{ NAME }}ControllerListenerMock!
+	var analytics: {{ NAME }}AnalyticsProtocolMock!
+	var view: {{ NAME }}View!
+
+	override func setUp() {
+		super.setUp()
+
+		listener = {{ NAME }}ControllerListenerMock()
+		analytics = {{ NAME }}AnalyticsProtocolMock()
+		controller = {{ NAME }}ViewController(listener: listener,
+										 analytics: analytics)
+		makeViewAppear(controller)
+		view = controller.view as? {{ NAME }}View
+	}
+
+	override func tearDown() {
+		super.tearDown()
+
+		listener = nil
+		analytics = nil
+		controller = nil
+		view = nil
+	}
+
+	func test_AnalyticsScreenView_On_Initialize() {
+		XCTAssert(analytics.screenViewCalled)
+	}
+}

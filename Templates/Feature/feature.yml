@@ -1,0 +1,23 @@
+options:
+  - name: NAME
+    description: The name of the module
+    question: What is the name of your module?
+    required: true
+    type: string
+files:
+  - template: Sources/Builder.stencil
+    path: "{{ DIR }}/Features/{{ NAME }}/{{ NAME }}Builder.swift"
+  - template: Sources/ViewController.stencil
+    path: "{{ DIR }}/Features/{{ NAME }}/{{ NAME }}ViewController.swift"
+  - template: Sources/Presenter.stencil
+    path: "{{ DIR }}/Features/{{ NAME }}/{{ NAME }}Presenter.swift"
+  - template: Sources/View.stencil
+    path: "{{ DIR }}/Features/{{ NAME }}/View/{{ NAME }}View.swift"
+  - template: Sources/Analytics.stencil
+    path: "{{ DIR }}/Features/{{ NAME }}/Analytics/{{ NAME }}Analytics.swift"
+  - template: Sources/AnalyticsEvents.stencil
+    path: "{{ DIR }}/Features/{{ NAME }}/Analytics/{{ NAME }}AnalyticsEvents.swift"
+  - template: Tests/ViewControllerTests.stencil
+    path: "{{TEST_DIR}}/Features/{{ NAME }}/{{ NAME }}ViewControllerTests.swift"
+  - template: Tests/PresenterTests.stencil
+    path: "{{TEST_DIR}}/Features/{{ NAME }}/{{ NAME }}PresenterTests.swift" 

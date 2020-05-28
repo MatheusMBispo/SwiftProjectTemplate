@@ -1,0 +1,15 @@
+import UIKit
+
+class {{NAME}}View: DesignSystem.View {
+	override func buildViewHierarchy() {
+		super.buildViewHierarchy()
+	}
+
+	override func setupConstraints() {
+		super.setupConstraints()
+    }
+    
+    override func setupAdditionalConfiguration() {
+        super.setupAdditionalConfiguration()
+    }
+}

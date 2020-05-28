@@ -1,0 +1,14 @@
+import Foundation
+
+//sourcery: AutoMockable
+protocol {{ NAME }}Controllable: class {}
+
+//sourcery: AutoMockable
+protocol {{ NAME }}Listener: class {}
+
+class {{ NAME }}Presenter {
+    weak var listener: {{ NAME }}Listener?
+    weak var controller: {{ NAME }}Controllable?
+}
+
+extension {{ NAME }}Presenter: {{ NAME }}ControllerListener {}

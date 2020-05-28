@@ -1,0 +1,25 @@
+//sourcery: AutoMockable
+public protocol {{ NAME }}Dependency: class {}
+
+final class {{ NAME }}Container {
+    public init(dependencies: {{ NAME }}Dependency) {}
+}
+
+//sourcery: AutoMockable
+protocol {{ NAME }}Buildable: class {
+    func build(dependencies: {{ NAME }}Dependency, listener: {{ NAME }}Listener) -> DesignSystem.ViewController
+}
+
+final class {{ NAME }}Builder: {{ NAME }}Buildable {
+    func build(dependencies: {{ NAME }}Dependency, listener: {{ NAME }}Listener) -> DesignSystem.ViewController {
+        let container = {{ NAME }}Container(dependencies: dependencies)
+        let presenter = {{ NAME }}Presenter()
+        let analytics = {{ NAME }}Analytics()
+        let viewController = {{ NAME }}ViewController(listener: presenter, analytics: analytics)
+
+		presenter.controller = viewController
+        presenter.listener = listener
+        
+        return viewController
+    }
+}

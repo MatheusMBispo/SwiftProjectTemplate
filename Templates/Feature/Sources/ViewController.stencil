@@ -1,0 +1,33 @@
+import UIKit
+
+//sourcery: AutoMockable
+protocol {{ NAME }}ControllerListener: class {}
+
+class {{ NAME }}ViewController: DesignSystem.ViewController {
+    private var _view = {{ NAME }}View()
+    private var listener: {{ NAME }}ControllerListener
+    private let analytics: {{ NAME }}AnalyticsProtocol
+
+    init(listener: {{ NAME }}ControllerListener, analytics: {{ NAME }}AnalyticsProtocol) {
+        self.listener = listener
+        self.analytics = analytics
+        super.init(nibName: nil, bundle: nil)
+		modalPresentationStyle = .overFullScreen
+    }
+
+    override func loadView() {
+        view = _view
+
+        setNavigationTitle("{{ NAME }}")
+        view.backgroundColor = ColorName.paletteBlueMedium.color
+        _view.configureDismissOnTap()
+    }
+  
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        analytics.screenView()
+    }
+}
+
+extension {{ NAME }}ViewController: {{ NAME }}Controllable {}

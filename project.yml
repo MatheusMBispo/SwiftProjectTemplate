@@ -1,0 +1,40 @@
+name: Project
+options:
+  bundleIdPrefix: br.com.project
+  usesTabs: true
+  tabWidth: 4
+  indentWidth: 4
+
+targets:
+  Project:
+    type: application
+    platform: iOS
+    deploymentTarget: "11.0"
+    sources: 
+      - Sources/
+    info: 
+      path: Sources/SupportingFiles/Info.plist
+      properties:
+        UISupportedInterfaceOrientations: [UIInterfaceOrientationPortrait]
+        UILaunchStoryboardName: LaunchScreen
+    preBuildScripts:
+      - script: make assets
+        name: Assets
+      - script: make mock
+        name: Mock
+    dependencies:
+      - carthage: SnapKit
+
+  ProjectTests:
+    platform: iOS
+    type: bundle.unit-test
+    sources:
+      - Tests/
+    info: 
+      path: Tests/SupportingFiles/Info.plist
+    dependencies:
+      - target: Project
+    scheme:
+      testTargets:
+        - ProjectTests
+      gatherCoverageData: true

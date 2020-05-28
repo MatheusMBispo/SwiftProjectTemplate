@@ -1,0 +1,26 @@
+@testable import BrMallsLojista
+import XCTest
+
+class {{ NAME }}PresenterTests: XCTestCase {
+    var presenter: {{ NAME }}Presenter!
+	var controller: {{ NAME }}ControllableMock!
+	var listener: {{ NAME }}ListenerMock!
+
+	override func setUp() {
+		super.setUp()
+
+		controller = {{ NAME }}ControllableMock()
+		listener = {{ NAME }}ListenerMock()
+		presenter = {{ NAME }}Presenter()
+		presenter.controller = controller
+		presenter.listener = listener
+	}
+
+	override func tearDown() {
+		super.tearDown()
+
+		presenter = nil
+		listener = nil
+		controller = nil
+	}
+}
